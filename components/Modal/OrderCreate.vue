@@ -50,7 +50,7 @@ const sendConsultationForm = async () => {
 			email: form.email,
 			owner: form.owner,
 			staff: props.staff,
-			id: props.tariffId
+			servic_id: props.tariffId
 		});
 		if (res) {
 			isOpen.value = false;

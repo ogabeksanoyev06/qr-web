@@ -59,7 +59,7 @@
 						</DropdownMenuItem>
 					</DropdownMenuContent>
 				</DropdownMenu>
-				<a href="" class="max-lg:hidden">
+				<a :href="`tel:${about[0].phone_1}`" class="max-lg:hidden">
 					<Button class="bg-white/[0.16] border-white/[0.08] text-white text-base">
 						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
 							<path
@@ -67,7 +67,7 @@
 								fill="white"
 							/>
 						</svg>
-						+998 99 165 32 41
+						{{ about[0].phone_1 }}
 					</Button>
 				</a>
 
@@ -88,10 +88,12 @@
 
 <script setup>
 import { useTranslationsStore } from '~/stores/translations.js';
+import { useAboutStore } from '~/stores/about.js';
 
 const dark = ref(false);
 
 const translationsStore = useTranslationsStore();
+const infosStore = useAboutStore();
 
 const { translations } = storeToRefs(translationsStore);
 
@@ -99,6 +101,7 @@ const localePath = useLocalePath();
 const { setLocale, locale } = useI18n();
 
 const languageDropdown = ref(false);
+const { about } = storeToRefs(infosStore);
 
 const langs = [
 	{
